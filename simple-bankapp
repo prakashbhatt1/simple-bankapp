@@ -1,0 +1,80 @@
+import os,sys
+import time
+
+class Customer:
+	'''this is Customer class which handle various bank related methods'''
+	bank_namme = 'DISTRICT BANK OF INDIA(DBOI)\n'
+	this_time = time.asctime()#for current time
+	def __init__(self,name,balance=0):#this is constructor function which calls itself 
+		self.name=name
+		self.balance=balance
+
+	def deposit(self,amount):
+		self.balance=self.balance+amount
+		print('Amount Deposited,now your balance: ',self.balance)
+
+	def withdraw(self,amount):
+		if amount>self.balance:
+			print('sorry,insufficent balance for this transaction !!')
+			sys.exit()
+		self.balance=self.balance - amount
+		print('withdraw sucessfully,now your balance: ',self.balance)
+
+print(f'\t\t\tWELCOME TO {Customer.bank_namme}\t\t\t{Customer.this_time}\n')
+name=[input('\t\t\tPlz Enter your name: ')]
+pwd=[input('\t\t\tPlease Enter password: ')]
+time.sleep(1)#time.sleep(in second) used for hold screen,
+chance = [3]
+for i in range(1,4):
+	pwd1=[input('\n\t\t\tRe-enter your password: ')]#\n for new line and \t for tab/space
+	if pwd != pwd1:
+		print('\n\t\t\tinvalid password')
+		j=3
+		print(f'\t\t\tYou have {j-i} attempt remain')
+		i+=1
+		if i==4:
+			print('Sorry for inconveniences,plz try after 24 hr later or visit our branch, thanks...!!! ')
+			sys.exit()
+	elif pwd == pwd1:
+		print('\n\t\t\tPlease wait a second... .\n')
+		time.sleep(2)
+
+		c=Customer(name)
+		while True:
+			print('\n\tDEPOSITE: d\n \tWITHDRAW: w\n \tEXIT:  e ')
+			option=input('SELECT YOUR OPTION: ')
+			if option.lower()=='d':
+				amount=float(input('plz Enter amount for deposit: '))
+				c.deposit(amount)
+
+			elif option.lower()=='w':
+				amount=float(input('plz Enter amount for withdraw: '))
+				c.withdraw(amount)
+
+			elif option.lower()=='e':
+				print(f"Thanks, {name[0]} for visit our {Customer.bank_namme}'ATM,have great time ☺")
+				sys.exit()
+			else:
+				print('Please Choose valid option')
+else:
+	print('error 404')
+	sys.exit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
