@@ -41,7 +41,7 @@ for i in range(1,4):
 
 		c=Customer(name)
 		while True:
-			print('\n\tDEPOSITE: d\n \tWITHDRAW: w\n \tEXIT:  e ')
+			print('\n\tDEPOSIT: d\n \tWITHDRAW: w\n \tEXIT:  e ')
 			option=input('SELECT YOUR OPTION: ')
 			if option.lower()=='d':
 				amount=float(input('plz Enter amount for deposit: '))
